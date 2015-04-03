@@ -29,6 +29,11 @@ ALLOWED_HOSTS = []
 TEMPLATE_DIRS = {
     "blog/templates"
 }
+
+HAYSTACK_SITECONF = 'drumcoder.search_sites'
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_WHOOSH_PATH = '/home/user/web/drumcoder/index.whoosh'
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -40,6 +45,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'blog',
     'django.contrib.admindocs',
+    'whoosh',
+    'haystack',
 )
 
 MIDDLEWARE_CLASSES = (

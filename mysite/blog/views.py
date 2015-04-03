@@ -6,5 +6,5 @@ from blog.models import posts
 
 
 def home(request):
-    enteries = posts.objects.all()[:2]
+    enteries = posts.objects.all()
     return render_to_response('index.html', {'posts': enteries})

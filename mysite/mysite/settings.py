@@ -30,18 +30,18 @@ TEMPLATE_DIRS = {
     "blog/templates"
 }
 
-WHOOSH_INDEX = os.path.join(PROJECT_DIR,'whoosh/')
+# WHOOSH_INDEX = os.path.join(PROJECT_DIR,'whoosh/')
 
 HAYSTACK_CONNECTIONS = {
     'default': {
     'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-    'PATH': WHOOSH_INDEX,
+    'PATH': os.path.join(os.path.dirname(__file__),'whoosh_index'),
     },
 }
 
-# HAYSTACK_SITECONF = 'drumcoder.search_sites'
+# HAYSTACK_SITECONF = 'mysite.search_sites'
 # HAYSTACK_SEARCH_ENGINE = 'whoosh'
-# HAYSTACK_WHOOSH_PATH = '/home/user/web/drumcoder/index.whoosh'
+# HAYSTACK_WHOOSH_PATH = '/home/whoosh/mysite_index'
 
 # Application definition
 
@@ -52,10 +52,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'haystack',
     'blog',
     'django.contrib.admindocs',
-    'haystack',
-    'whoosh',
 )
 
 MIDDLEWARE_CLASSES = (

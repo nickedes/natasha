@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
+PROJECT_DIR = '/home/nickedes/nickedesEnv/lib/python3.4/site-packages'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -30,9 +30,18 @@ TEMPLATE_DIRS = {
     "blog/templates"
 }
 
-HAYSTACK_SITECONF = 'drumcoder.search_sites'
-HAYSTACK_SEARCH_ENGINE = 'whoosh'
-HAYSTACK_WHOOSH_PATH = '/home/user/web/drumcoder/index.whoosh'
+WHOOSH_INDEX = os.path.join(PROJECT_DIR,'whoosh/')
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+    'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+    'PATH': WHOOSH_INDEX,
+    },
+}
+
+# HAYSTACK_SITECONF = 'drumcoder.search_sites'
+# HAYSTACK_SEARCH_ENGINE = 'whoosh'
+# HAYSTACK_WHOOSH_PATH = '/home/user/web/drumcoder/index.whoosh'
 
 # Application definition
 
@@ -45,8 +54,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'blog',
     'django.contrib.admindocs',
-    'whoosh',
     'haystack',
+    'whoosh',
 )
 
 MIDDLEWARE_CLASSES = (

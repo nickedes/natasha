@@ -12,7 +12,7 @@
 	<body>
 
 		<div class="container">
-			<form class="form" action="">
+			<form class="form" action=" url 'search_titles' ">
 				<input type="text" name="search">
 				<input	type="submit" value="Go">
 			</form><br/>
@@ -20,8 +20,8 @@
 			<hr />
 			{% for post in posts %}
 				<div class="post">
-					<h2>{{ post.title }}</h2>
-					<h3>Posted on {{ post.timestamp }} by {{ post.author }}</h3>
+					<h2>{{ post.object.title }}</h2>
+					<h3>Posted on {{ post.object.timestamp }} by {{ post.author }}</h3>
 					<p>{{ post.bodytext }}</p>
 				</div>
 				<hr />
